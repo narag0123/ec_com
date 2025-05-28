@@ -13,21 +13,18 @@ import {
 import { useState } from "react";
 import { EcState, TaskData } from "../(pages)/[id]/page";
 
-/**
- * Collection: 터널이름, Document: 기간별 구분
- * @param tunnelName 터널명, Collection
- * */
 export const getDataByName = async (
     tunnelName: string
 ): Promise<EcState> => {
-    const data: EcState = {};
     try {
         const collectionRef = collection(db, tunnelName);
         const snap = await getDocs(collectionRef);
+        const data: EcState = {};
 
         snap.docs.forEach((docSnap) => {
             const month = parseInt(docSnap.id);
             const raw = docSnap.data();
+
             data[month] = {
                 monthTask: raw.monthTask ?? {
                     power: false,
@@ -41,6 +38,9 @@ export const getDataByName = async (
                     ground: false,
                     light: false,
                 },
+                outsideTask: raw.outsideTask ?? false,
+                safetySupervisor:
+                    raw.safetySupervisor ?? "OOO",
             };
         });
 
@@ -53,7 +53,7 @@ export const getDataByName = async (
             `❌ ${tunnelName} 문서 불러오기 실패:`,
             error
         );
-        return {};
+        return {}; // 실패 시 빈 객체 반환
     }
 };
 
@@ -69,7 +69,6 @@ export const createFirestoreStructure = async () => {
         "SNM",
         "NR",
     ];
-    const year = 2025;
 
     try {
         for (const tunnel of tunnelList) {
@@ -90,6 +89,8 @@ export const createFirestoreStructure = async () => {
                         ground: false,
                         light: false,
                     },
+                    outsideTask: false,
+                    safetySupervisor: "OOO",
                 });
 
                 console.log(
