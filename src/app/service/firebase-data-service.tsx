@@ -9,6 +9,7 @@ import {
     DocumentData,
     query,
     where,
+    getDoc,
 } from "firebase/firestore";
 import { useState } from "react";
 import { EcState, TaskData } from "../(pages)/[id]/page";
@@ -128,60 +129,42 @@ export const updateMonthData = async (
 };
 
 /**
- * Firestore의 특정 컬렉션(터널 이름)의 모든 월 데이터를 false로 초기화
+ * Firestore의 특정 컬렉션(터널 이름)의 모든 월 데이터를 완전히 초기화
  * @param tunnelId 예: 'GJ', 'HR', 'BH' 등
  */
 export const initData = async (
-    lastURL: string
+    tunnelId: string
 ): Promise<void> => {
-    const defaultTaskData = {
-        monthTask: {
-            power: false,
-            generator: false,
-            facility: false,
-        },
-        quarterTask: {
-            thermal: false,
-        },
-        halfTask: {
-            ground: false,
-            light: false,
-        },
-    };
+    try {
+        for (let month = 1; month <= 12; month++) {
+            const ref = doc(db, tunnelId, String(month));
 
-    const resetFirestoreDataToFalse = async (
-        tunnelId: string
-    ) => {
-        try {
-            for (let month = 1; month <= 12; month++) {
-                const ref = doc(
-                    db,
-                    tunnelId,
-                    String(month)
-                );
-                await setDoc(ref, defaultTaskData, {
-                    merge: true,
-                });
-                console.log(
-                    `✅ ${tunnelId}/${month} 초기화 완료`
-                );
-            }
-            console.log(`🔥 ${tunnelId} 전체 초기화 완료`);
-        } catch (error) {
-            console.error(
-                `❌ ${tunnelId} 초기화 실패:`,
-                error
+            const resetData = {
+                monthTask: {
+                    power: false,
+                    generator: false,
+                    facility: false,
+                },
+                quarterTask: {
+                    thermal: false,
+                },
+                halfTask: {
+                    ground: false,
+                    light: false,
+                },
+                outsideTask: false,
+                safetySupervisor: "OOO", // 기본 이름으로 초기화
+            };
+
+            await setDoc(ref, resetData, { merge: false }); // 완전 덮어쓰기
+
+            console.log(
+                `✅ ${tunnelId}/${month} 초기화 완료`
             );
         }
-    };
 
-    resetFirestoreDataToFalse(lastURL);
-
-    // const tunnels = ["GJ", "HR", "BH", "JJ", "SNM", "NR"];
-
-    // for (const tunnel of tunnels) {
-    //     await resetFirestoreDataToFalse(tunnel);
-    // }
-
-    console.log(`🚨${lastURL} 터널 초기화 완료`);
+        console.log(`🔥 ${tunnelId} 전체 초기화 완료`);
+    } catch (error) {
+        console.error(`❌ ${tunnelId} 초기화 실패:`, error);
+    }
 };

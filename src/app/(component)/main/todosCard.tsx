@@ -375,7 +375,7 @@ export default function TodosCard({
                         }
                     />
                     <ToggleSwitch
-                        checked={status.halfTask.ground}
+                        checked={status.halfTask.light}
                         label="조도측정"
                         onChange={handleChange(
                             "halfTask",
