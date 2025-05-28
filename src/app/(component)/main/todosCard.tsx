@@ -274,28 +274,6 @@ export default function TodosCard({
                         </button>
                     )}
                 </div>
-                <div className="basis-1/4 text-sm flex items-end">
-                    {Object.values(
-                        status.quarterTask
-                    ).every(Boolean) ? (
-                        <span className="text-sm">
-                            완료날짜: {nowDate}일
-                        </span>
-                    ) : (
-                        <></>
-                    )}
-                </div>
-                <div className="basis-1/4 text-sm flex items-end">
-                    {Object.values(status.halfTask).every(
-                        Boolean
-                    ) ? (
-                        <span className="text-sm">
-                            완료날짜: {nowDate}일
-                        </span>
-                    ) : (
-                        <></>
-                    )}
-                </div>
             </div>
             {/* 매월 */}
             <div className="flex">
