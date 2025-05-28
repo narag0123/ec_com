@@ -240,6 +240,9 @@ export default function TodosCard({
         <div className="py-3 mb-3">
             <div className="flex  mb-3">
                 <div className="basis-1/4 flex items-end gap-5">
+                    <div className="text-2xl">
+                        {month}월
+                    </div>
                     {showInput ? (
                         <div className="px-3 py-1 border-black border-[1px] rounded-full">
                             <input
