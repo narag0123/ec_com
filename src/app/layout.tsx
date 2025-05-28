@@ -10,7 +10,7 @@ const square = localFont({
     weight: "100 900",
 });
 
-export const roboto = Roboto({
+const roboto = Roboto({
     subsets: ["latin"],
     weight: ["300", "400", "700"],
     variable: "--font-roboto", // Tailwind에서 변수로 사용하려면
