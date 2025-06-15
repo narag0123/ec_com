@@ -37,6 +37,9 @@ export default function Header() {
                 return "알 수 없음";
         }
     };
+
+    console.log(lastURL);
+
     return (
         <div className="">
             <div className="flex justify-between pb-10">
@@ -69,6 +72,7 @@ export default function Header() {
                         </span>
                     </button>
                 </div>
+
                 <div className="flex gap-3 items-end">
                     {tunnelList.map((e) => {
                         return (
@@ -90,12 +94,18 @@ export default function Header() {
                     })}
                 </div>
             </div>
-            <div className="flex">
-                <div className="basis-1/4">매월</div>
-                <div className="basis-1/4">분기</div>
-                <div className="basis-1/4">반기</div>
-                <div className="basis-1/4">외부점검</div>
-            </div>
+            {lastURL ? (
+                <div className="flex">
+                    <div className="basis-1/4">매월</div>
+                    <div className="basis-1/4">분기</div>
+                    <div className="basis-1/4">반기</div>
+                    <div className="basis-1/4">
+                        외부점검
+                    </div>
+                </div>
+            ) : (
+                <></>
+            )}
         </div>
     );
 }
