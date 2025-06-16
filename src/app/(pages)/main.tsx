@@ -1,5 +1,7 @@
 "use client";
 import { getMonth } from "date-fns";
+import { useEffect } from "react";
+import { getAllData } from "../service/firebase-data-service";
 
 export default function Main_Page() {
     const date = new Date();
@@ -13,6 +15,10 @@ export default function Main_Page() {
         "소음저감",
     ];
 
+    useEffect(() => {
+        console.log(getAllData(tunnelList));
+    }, []);
+
     return (
         <div>
             <div>
@@ -21,7 +27,7 @@ export default function Main_Page() {
                 <div className="flex justify-between">
                     {tunnelList.map((e, i) => {
                         return (
-                            <div>
+                            <div key={i}>
                                 <h2>{e}</h2>
                                 <div>진행률</div>
                             </div>

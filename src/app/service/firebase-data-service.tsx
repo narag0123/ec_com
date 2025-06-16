@@ -168,3 +168,34 @@ export const initData = async (
         console.error(`❌ ${tunnelId} 초기화 실패:`, error);
     }
 };
+
+export const getAllData = async (
+    tunnelList: string[]
+): Promise<Record<string, any[]>> => {
+    try {
+        const results: Record<string, any[]> = {};
+
+        // 모든 컬렉션 병렬로 fetch
+        await Promise.all(
+            tunnelList.map(async (collectionName) => {
+                const collectionRef = collection(
+                    db,
+                    collectionName
+                );
+                const snap = await getDocs(collectionRef);
+
+                const data = snap.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+
+                results[collectionName] = data;
+            })
+        );
+
+        return results;
+    } catch (error) {
+        console.error("Error fetching collections:", error);
+        return {};
+    }
+};
