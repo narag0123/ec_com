@@ -3,6 +3,28 @@
 import { initData } from "@/app/service/firebase-data-service";
 import { usePathname } from "next/navigation";
 
+export const urlNameByTunnelList = (
+    name: string
+): string => {
+    switch (name) {
+        case "광장":
+            return "GJ";
+        case "화랑":
+            return "HR";
+        case "백현":
+            return "BH";
+        case "정자":
+            return "JJ";
+        case "성내미":
+            return "SNM";
+        case "소음저감":
+            return "NR";
+
+        default:
+            return "알 수 없음";
+    }
+};
+
 export default function Header() {
     const pathname: string[] = usePathname()
         .split("/")
@@ -17,26 +39,6 @@ export default function Header() {
         "성내미",
         "소음저감",
     ];
-
-    const urlNameByTunnelList = (name: string): string => {
-        switch (name) {
-            case "광장":
-                return "GJ";
-            case "화랑":
-                return "HR";
-            case "백현":
-                return "BH";
-            case "정자":
-                return "JJ";
-            case "성내미":
-                return "SNM";
-            case "소음저감":
-                return "NR";
-
-            default:
-                return "알 수 없음";
-        }
-    };
 
     console.log(lastURL);
 

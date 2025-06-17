@@ -12,7 +12,12 @@ import {
     getDoc,
 } from "firebase/firestore";
 import { useState } from "react";
-import { EcState, TaskData } from "../(pages)/[id]/page";
+import {
+    EcState,
+    EcStateType,
+    TaskData,
+} from "../(pages)/[id]/page";
+import { urlNameByTunnelList } from "../(component)/head/header";
 
 export const getDataByName = async (
     tunnelName: string
@@ -171,31 +176,25 @@ export const initData = async (
 
 export const getAllData = async (
     tunnelList: string[]
-): Promise<Record<string, any[]>> => {
-    try {
-        const results: Record<string, any[]> = {};
+): Promise<Record<string, EcStateType[]>> => {
+    const result: Record<string, EcStateType[]> = {};
 
-        // 모든 컬렉션 병렬로 fetch
-        await Promise.all(
-            tunnelList.map(async (collectionName) => {
-                const collectionRef = collection(
-                    db,
-                    collectionName
-                );
-                const snap = await getDocs(collectionRef);
+    for (const tunnel of tunnelList) {
+        const param = urlNameByTunnelList(tunnel);
 
-                const data = snap.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
+        try {
+            const colRef = collection(db, param);
+            const snap = await getDocs(colRef);
 
-                results[collectionName] = data;
-            })
-        );
+            const data = snap.docs
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((doc) => doc.data() as EcStateType);
 
-        return results;
-    } catch (error) {
-        console.error("Error fetching collections:", error);
-        return {};
+            result[tunnel] = data;
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
+
+    return result;
 };

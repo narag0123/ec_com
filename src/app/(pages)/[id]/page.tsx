@@ -11,7 +11,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-interface EcStateType {
+export interface EcStateType {
     monthTask: {
         power: boolean;
         generator: boolean;

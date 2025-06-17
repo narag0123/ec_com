@@ -6,7 +6,7 @@ import Main_Page from "./(pages)/main";
 
 export default function Home() {
     return (
-        <div className="text-[24px] py-10 font-square">
+        <div className="text-[24px] py-10 font-square overflow-x-auto">
             <main>
                 <Main_Page />
             </main>
