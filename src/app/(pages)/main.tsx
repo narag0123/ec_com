@@ -300,7 +300,7 @@ export default function Main_Page() {
                 </div>
             </div>
             {/* 반기 */}
-            <div className="py-20">
+            <div className="py-0">
                 <h1 className="font-bold">반기 진행상황</h1>
                 <hr className="my-3 mb-5" />
                 <div className="flex justify-between">
