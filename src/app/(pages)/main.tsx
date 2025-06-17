@@ -160,7 +160,7 @@ export default function Main_Page() {
 
     return (
         <div>
-            <div className="my-10">
+            <div>
                 <div className="w-full flex justify-end text-lg gap-5">
                     <span className="flex items-center gap-2">
                         완료:{" "}

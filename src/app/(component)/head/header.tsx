@@ -49,30 +49,35 @@ export default function Header() {
                     <a href="/" className="font-bold">
                         직무고시
                     </a>
-                    <button
-                        className="flex items-center gap-3 border-black border-[1px] p-2 px-8 rounded-full shadow-md active:shadow-none"
-                        onClick={() => {
-                            const confirmed =
-                                window.confirm(
-                                    "주의!! 현재 페이지의 모든 데이터가 초기화됩니다. 가능하면 1년에 한번만 초기화해 주세요. 정말 초기화하시겠습니까?"
-                                );
-                            if (confirmed) {
-                                initData(lastURL).then(
-                                    () => {
-                                        window.location.reload();
-                                    }
-                                );
-                            }
-                        }}
-                    >
-                        <img
-                            className="w-[20px]"
-                            src="/refresh.png"
-                        />
-                        <span className="text-base">
-                            초기화
-                        </span>
-                    </button>
+
+                    {lastURL ? (
+                        <button
+                            className="flex items-center gap-3 border-black border-[1px] p-2 px-8 rounded-full shadow-md active:shadow-none"
+                            onClick={() => {
+                                const confirmed =
+                                    window.confirm(
+                                        "주의!! 현재 페이지의 모든 데이터가 초기화됩니다. 가능하면 1년에 한번만 초기화해 주세요. 정말 초기화하시겠습니까?"
+                                    );
+                                if (confirmed) {
+                                    initData(lastURL).then(
+                                        () => {
+                                            window.location.reload();
+                                        }
+                                    );
+                                }
+                            }}
+                        >
+                            <img
+                                className="w-[20px]"
+                                src="/refresh.png"
+                            />
+                            <span className="text-base">
+                                초기화
+                            </span>
+                        </button>
+                    ) : (
+                        <></>
+                    )}
                 </div>
 
                 <div className="flex gap-3 items-end">
