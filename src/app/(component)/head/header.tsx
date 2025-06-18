@@ -40,8 +40,6 @@ export default function Header() {
         "소음저감",
     ];
 
-    console.log(lastURL);
-
     return (
         <div className="">
             <div className="flex justify-between pb-10">
