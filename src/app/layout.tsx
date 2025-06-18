@@ -25,18 +25,6 @@ export const metadata: Metadata = {
         shortcut: "/favicon.ico",
         apple: "/apple-touch-icon.png",
     },
-    openGraph: {
-        title: "직무직무",
-        description: "직무고시 관리용 웹페이지",
-        url: "https://ec-com.vercel.app",
-        siteName: "사이트명",
-        images: [
-            {
-                url: "https://ec-com.vercel.app/favicon.jpg",
-            },
-        ],
-        type: "website",
-    },
 };
 
 export default function RootLayout({
