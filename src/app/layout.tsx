@@ -22,6 +22,8 @@ export const metadata: Metadata = {
     description: "직무고시 관리용 웹페이지",
     icons: {
         icon: "/favicon.ico",
+        shortcut: "/favicon.ico",
+        apple: "/apple-touch-icon.png",
     },
 };
 
