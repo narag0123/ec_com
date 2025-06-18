@@ -13,7 +13,7 @@ interface Props {
     monthIndex: number;
     data: Record<string, DocumentData[]>;
 }
-
+// TODO: 함수 이름 만들고 thumb와 favicon수정하기
 export default function TodosHalf({
     monthIndex,
     data,
