@@ -20,6 +20,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
     title: "직무직무",
     description: "직무고시 관리용 웹페이지",
+    icons: {
+        icon: "/favicon.ico",
+    },
 };
 
 export default function RootLayout({
