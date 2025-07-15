@@ -49,6 +49,7 @@ export interface EcState {
 export default function page() {
     const params = useParams();
     const id = params.id as string;
+    const isDisableUPS = !["GJ", "HR", "NR"].includes(id);
     const [ecState, setEcState] = useState<EcState>({});
 
     // ✅ 특정 월부터 12월까지 이름 업데이트
@@ -123,6 +124,7 @@ export default function page() {
                     onUpdateSupervisorFromMonth={
                         updateSupervisorFromMonth
                     }
+                    isDisableUPS={isDisableUPS}
                 />
             ))}
         </div>

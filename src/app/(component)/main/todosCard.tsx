@@ -23,6 +23,7 @@ type Props = {
         from: number,
         name: string
     ) => void;
+    isDisableUPS?: boolean;
 };
 
 export default function TodosCard({
@@ -31,6 +32,7 @@ export default function TodosCard({
     allData,
     onChange,
     onUpdateSupervisorFromMonth,
+    isDisableUPS,
 }: Props) {
     const [status, setStatus] = useState<TaskData>(
         data ?? {
@@ -317,6 +319,7 @@ export default function TodosCard({
                             "monthTask",
                             "ups"
                         )}
+                        disabled={isDisableUPS}
                         month={month}
                     />
                 </div>
