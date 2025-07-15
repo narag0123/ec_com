@@ -16,9 +16,12 @@ export default function TodosMonthly({
 }: Props) {
     return (
         <div className="">
-            <h1 className="font-bold text-lg">
-                {monthIndex}월 진행상황
-            </h1>
+            <div className="flex gap-3">
+                <h1 className="font-bold text-lg">
+                    {monthIndex}월 진행상황
+                </h1>
+                {/* <span className="text-lg">토글임</span> */}
+            </div>
             <hr className="my-3 mb-5" />
             <div className="flex justify-between">
                 {tunnelList.map((tunnel) => {

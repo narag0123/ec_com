@@ -38,6 +38,7 @@ export default function TodosCard({
                 power: false,
                 generator: false,
                 facility: false,
+                ups: false,
             },
             quarterTask: { thermal: false },
             halfTask: { ground: false, light: false },
@@ -306,6 +307,15 @@ export default function TodosCard({
                         onChange={handleChange(
                             "monthTask",
                             "facility"
+                        )}
+                        month={month}
+                    />
+                    <ToggleSwitch
+                        checked={status.monthTask.ups}
+                        label="UPS"
+                        onChange={handleChange(
+                            "monthTask",
+                            "ups"
                         )}
                         month={month}
                     />

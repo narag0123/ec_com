@@ -42,6 +42,8 @@ export default function TaskStatusPieChart({
                 return "발전기";
             case "power":
                 return "전력";
+            case "ups":
+                return "UPS";
 
             case "thermal":
                 return "열화상";

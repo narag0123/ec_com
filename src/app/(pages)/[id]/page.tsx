@@ -16,6 +16,7 @@ export interface EcStateType {
         power: boolean;
         generator: boolean;
         facility: boolean;
+        ups: false;
     };
     quarterTask: {
         thermal: boolean;
@@ -33,6 +34,7 @@ export interface TaskData {
         power: boolean;
         generator: boolean;
         facility: boolean;
+        ups: boolean;
     };
     quarterTask: { thermal: boolean };
     halfTask: { ground: boolean; light: boolean };

@@ -36,6 +36,7 @@ export const getDataByName = async (
                     power: false,
                     generator: false,
                     facility: false,
+                    ups: false,
                 },
                 quarterTask: raw.quarterTask ?? {
                     thermal: false,
@@ -87,6 +88,7 @@ export const createFirestoreStructure = async () => {
                         power: false,
                         generator: false,
                         facility: false,
+                        ups: false,
                     },
                     quarterTask: {
                         thermal: false,
@@ -149,6 +151,7 @@ export const initData = async (
                     power: false,
                     generator: false,
                     facility: false,
+                    ups: false,
                 },
                 quarterTask: {
                     thermal: false,
