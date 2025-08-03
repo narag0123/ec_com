@@ -286,7 +286,7 @@ export default function TodosCard({
                 <div className="basis-1/4 flex gap-8">
                     <ToggleSwitch
                         checked={status.monthTask.power}
-                        label="전력일지"
+                        label="일지류"
                         onChange={handleChange(
                             "monthTask",
                             "power"
@@ -296,7 +296,7 @@ export default function TodosCard({
 
                     <ToggleSwitch
                         checked={status.monthTask.generator}
-                        label="발전기일지"
+                        label="표지"
                         onChange={handleChange(
                             "monthTask",
                             "generator"
@@ -305,7 +305,7 @@ export default function TodosCard({
                     />
                     <ToggleSwitch
                         checked={status.monthTask.facility}
-                        label="시설물일지"
+                        label="사진대지"
                         onChange={handleChange(
                             "monthTask",
                             "facility"

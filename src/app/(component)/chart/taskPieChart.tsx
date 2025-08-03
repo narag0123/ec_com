@@ -37,11 +37,11 @@ export default function TaskStatusPieChart({
     const nameTransformer = (name: string) => {
         switch (name) {
             case "facility":
-                return "시설물";
+                return "사진대지";
             case "generator":
-                return "발전기";
+                return "표지";
             case "power":
-                return "전력";
+                return "일지류";
             case "ups":
                 return "UPS";
 
