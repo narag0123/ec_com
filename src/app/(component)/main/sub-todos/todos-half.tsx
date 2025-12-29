@@ -26,13 +26,17 @@ export default function TodosHalf({
             <hr className="my-3 mb-5" />
             <div className="flex justify-between">
                 {tunnelList.map((tunnel) => {
-                    const halfTask = data
+                    const rawHalfTask = data
                         ? getHalfCorrectedTask(
                               data,
                               tunnel,
                               monthIndex
                           )
                         : undefined;
+
+                    // 접지저항 항목 제외
+                    const { ground, ...halfTask } =
+                        rawHalfTask || {};
 
                     return (
                         <div

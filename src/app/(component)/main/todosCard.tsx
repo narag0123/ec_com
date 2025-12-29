@@ -348,7 +348,7 @@ export default function TodosCard({
                 </div>
                 {/* 반기 */}
                 <div className="basis-1/4 flex gap-8">
-                    <ToggleSwitch
+                    {/* <ToggleSwitch
                         checked={status.halfTask.ground}
                         label="접지저항"
                         onChange={handleChange(
@@ -367,7 +367,7 @@ export default function TodosCard({
                                 "ground"
                             )
                         }
-                    />
+                    /> */}
                     <ToggleSwitch
                         checked={status.halfTask.light}
                         label="조도측정"
